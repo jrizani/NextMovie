@@ -1,4 +1,4 @@
-package com.example.juliannr.mymovielist.viewholder;
+package com.example.juliannr.mymovielist.modul.viewholder;
 
 import android.content.Context;
 import android.support.constraint.ConstraintLayout;
@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.juliannr.mymovielist.R;
-import com.example.juliannr.mymovielist.adapter.MovieAdapter;
+import com.example.juliannr.mymovielist.modul.adapter.MovieAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

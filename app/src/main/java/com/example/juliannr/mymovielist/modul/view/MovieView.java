@@ -1,4 +1,4 @@
-package com.example.juliannr.mymovielist.view;
+package com.example.juliannr.mymovielist.modul.view;
 
 import com.example.juliannr.mymovielist.model.Movie;
 

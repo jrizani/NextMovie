@@ -1,4 +1,4 @@
-package com.example.juliannr.mymovielist.adapter;
+package com.example.juliannr.mymovielist.modul.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import com.bumptech.glide.Glide;
 import com.example.juliannr.mymovielist.R;
 import com.example.juliannr.mymovielist.model.Movie;
-import com.example.juliannr.mymovielist.viewholder.MovieViewHolder;
+import com.example.juliannr.mymovielist.modul.viewholder.MovieViewHolder;
 
 import java.util.List;
 
@@ -24,6 +24,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder> {
     private List<Movie> movies;
     private Context context;
     private SetOnItemClickListener setOnItemClickListener;
+    private OnLoadMoreListener onLoadMoreListener;
 
     public MovieAdapter(List<Movie> movies, Context context) {
         this.movies = movies;
@@ -32,6 +33,14 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder> {
 
     public void setSetOnItemClickListener(SetOnItemClickListener setOnItemClickListener) {
         this.setOnItemClickListener = setOnItemClickListener;
+    }
+
+    public void setOnLoadMoreListener(OnLoadMoreListener onLoadMoreListener) {
+        this.onLoadMoreListener = onLoadMoreListener;
+    }
+
+    public OnLoadMoreListener getOnLoadMoreListener() {
+        return onLoadMoreListener;
     }
 
     public SetOnItemClickListener getSetOnItemClickListener() {
@@ -58,5 +67,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder> {
 
     public interface SetOnItemClickListener{
         public void onClick(View view, int position);
+    }
+
+    public interface OnLoadMoreListener{
+        void onLoadMore();
     }
 }

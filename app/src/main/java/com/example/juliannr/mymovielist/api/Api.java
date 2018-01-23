@@ -29,4 +29,10 @@ public interface Api {
             @Query("api_key") String apiKey,
             @Query("page") int page
     );
+
+    @GET("popular")
+    Call<MovieResponse> getPopular(
+            @Query("api_key") String apiKey,
+            @Query("page") int page
+    );
 }

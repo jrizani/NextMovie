@@ -1,27 +1,25 @@
-package com.example.juliannr.mymovielist.activity;
+package com.example.juliannr.mymovielist.modul.activity;
 
-import android.app.Application;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.juliannr.mymovielist.R;
-import com.example.juliannr.mymovielist.fragment.NowPlayingFragment;
+import com.example.juliannr.mymovielist.modul.fragment.MovieFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static com.example.juliannr.mymovielist.utility.Constant.FragmentChooser.NOW_PLAYING;
+import static com.example.juliannr.mymovielist.utility.Constant.FragmentChooser.POPULAR;
+import static com.example.juliannr.mymovielist.utility.Constant.FragmentChooser.TOP_RATED;
+import static com.example.juliannr.mymovielist.utility.Constant.FragmentChooser.UPCOMING;
 
 public class MovieActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -40,13 +38,14 @@ public class MovieActivity extends AppCompatActivity
         setContentView(R.layout.activity_movie);
 
         initView();
-        fragment = NowPlayingFragment.newInstance();
-        setFragment(fragment, NOW_PLAYING);
+        fragment = MovieFragment.newInstance(NOW_PLAYING);
+        toolbar.setTitle(NOW_PLAYING);
+        getSupportFragmentManager().beginTransaction().add(R.id.frame_layout, fragment).commit();
     }
 
     private void setFragment(Fragment fragment, String jenis) {
-        //getActionBar().setTitle(jenis);
-        getSupportFragmentManager().beginTransaction().add(R.id.frame_layout, fragment).commit();
+        toolbar.setTitle(jenis);
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, fragment).commit();
     }
 
     private void initView() {
@@ -74,17 +73,22 @@ public class MovieActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
-
         if (id == R.id.nav_now_playing) {
-
+            fragment = MovieFragment.newInstance(NOW_PLAYING);
+            setFragment(fragment, NOW_PLAYING);
         } else if (id == R.id.nav_top_rated) {
-
+            fragment = MovieFragment.newInstance(TOP_RATED);
+            setFragment(fragment, TOP_RATED);
         } else if (id == R.id.nav_upcoming) {
-
+            fragment = MovieFragment.newInstance(UPCOMING);
+            setFragment(fragment, UPCOMING);
+        } else if (id == R.id.nav_popular){
+            fragment = MovieFragment.newInstance(POPULAR);
+            setFragment(fragment, POPULAR);
         } else if (id == R.id.nav_favorite) {
 
         } else if (id == R.id.nav_exit) {
-
+            System.exit(0);
         }
         drawer.closeDrawer(GravityCompat.START);
         return false;
