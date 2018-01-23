@@ -8,6 +8,7 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class Movie {
+    private int id;
     private String title;
     @SerializedName("poster_path")
     private String image;
@@ -18,6 +19,10 @@ public class Movie {
         return backdrop;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -25,4 +30,6 @@ public class Movie {
     public String getImage() {
         return image;
     }
+
+
 }

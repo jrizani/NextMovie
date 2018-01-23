@@ -1,9 +1,11 @@
 package com.example.juliannr.mymovielist.api;
 
+import com.example.juliannr.mymovielist.model.MovieDetail;
 import com.example.juliannr.mymovielist.model.MovieResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 /**
@@ -34,5 +36,11 @@ public interface Api {
     Call<MovieResponse> getPopular(
             @Query("api_key") String apiKey,
             @Query("page") int page
+    );
+
+    @GET("{movie_id}")
+    Call<MovieDetail> getDetail(
+            @Path("movie_id") int id,
+            @Query("api_key") String apiKey
     );
 }

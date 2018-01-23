@@ -51,9 +51,9 @@ public class MovieFragment extends Fragment implements MovieView {
     private int pages;
     private String jenis;
     private Context context;
-    private boolean isLoading = true;
-    private int page = 1;
-    private List<Movie> allMovies = new ArrayList<>();
+//    private boolean isLoading = true;
+//    private int page = 1;
+//    private List<Movie> allMovies = new ArrayList<>();
 
     public MovieFragment() {
         presenter = new MoviePresenter();
@@ -88,15 +88,15 @@ public class MovieFragment extends Fragment implements MovieView {
         if (getArguments() != null) {
             this.jenis = getArguments().getString("jenis");
         }
-        presenter.loadMovies(jenis, page);
+        presenter.loadMovies(jenis, 1);
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
         unbinder = null;
-        page = 1;
-        allMovies = new ArrayList<>();
+//        page = 1;
+//        allMovies = new ArrayList<>();
     }
 
     @Override
@@ -112,15 +112,15 @@ public class MovieFragment extends Fragment implements MovieView {
 
     @Override
     public void onMoviesFound(final List<Movie> movies) {
-        allMovies.addAll(movies);
-        if (!allMovies.isEmpty() && allMovies != null) {
-            isLoading = false;
+//        allMovies.addAll(movies);
+        if (!movies.isEmpty() && movies != null) {
+//            isLoading = false;
             final Random random = new Random();
-            Movie movie = allMovies.get(random.nextInt(movies.size()));
+            Movie movie = movies.get(random.nextInt(movies.size()));
             slider.setVisibility(View.VISIBLE);
             recyclerView.setVisibility(View.VISIBLE);
             progressBar.setVisibility(View.GONE);
-            final MovieAdapter adapter = new MovieAdapter(allMovies, getContext());
+            final MovieAdapter adapter = new MovieAdapter(movies, getContext());
             recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
             recyclerView.setAdapter(adapter);
 
@@ -143,7 +143,7 @@ public class MovieFragment extends Fragment implements MovieView {
 
                 @Override
                 public void onFinish() {
-                    Movie movie = allMovies.get(random.nextInt(allMovies.size()));
+                    Movie movie = movies.get(random.nextInt(movies.size()));
                     Glide.with(context).load(Constant.Api.IMAGE_PATH +
                             movie.getBackdrop()).into(slider);
                     sliderTitle.setText(movie.getTitle());
