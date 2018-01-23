@@ -18,8 +18,64 @@ import static com.example.juliannr.mymovielist.utility.Constant.Api.API_KEY;
 public class MoviePresenter {
     MovieView view;
 
-    public void loadMovies(int page){
+    public void loadNowPlaying(int page){
         Call<MovieResponse> call = App.getInstance().getApi().getNowPlaying(API_KEY, page);
+        call.enqueue(new Callback<MovieResponse>() {
+            @Override
+            public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
+                if(response.isSuccessful()){
+                    if(response.body() != null){
+                        getView().setTotalPages(response.body().getTotalPages());
+                        if(response.body().getMovies() != null){
+                            getView().onMoviesFound(response.body().getMovies());
+                        }
+                        else {
+                            getView().onError("Failed to found movie list");
+                        }
+                    }
+                    else {
+                        getView().onError("No Data");
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MovieResponse> call, Throwable t) {
+                getView().onError("Server Failed: " + t.getMessage());
+            }
+        });
+    }
+
+    public void loadTopRated(int page){
+        Call<MovieResponse> call = App.getInstance().getApi().getTopRated(API_KEY, page);
+        call.enqueue(new Callback<MovieResponse>() {
+            @Override
+            public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
+                if(response.isSuccessful()){
+                    if(response.body() != null){
+                        getView().setTotalPages(response.body().getTotalPages());
+                        if(response.body().getMovies() != null){
+                            getView().onMoviesFound(response.body().getMovies());
+                        }
+                        else {
+                            getView().onError("Failed to found movie list");
+                        }
+                    }
+                    else {
+                        getView().onError("No Data");
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MovieResponse> call, Throwable t) {
+                getView().onError("Server Failed: " + t.getMessage());
+            }
+        });
+    }
+
+    public void loadUpcoming(int page){
+        Call<MovieResponse> call = App.getInstance().getApi().getUpcoming(API_KEY, page);
         call.enqueue(new Callback<MovieResponse>() {
             @Override
             public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {

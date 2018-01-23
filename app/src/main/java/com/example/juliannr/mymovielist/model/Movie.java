@@ -11,15 +11,11 @@ public class Movie {
     private String title;
     @SerializedName("poster_path")
     private String image;
+    @SerializedName("backdrop_path")
+    private String backdrop;
 
-    private boolean favorited = false;
-
-    public boolean isFavorited() {
-        return favorited;
-    }
-
-    public void setFavorited(boolean favorited) {
-        this.favorited = favorited;
+    public String getBackdrop() {
+        return backdrop;
     }
 
     public String getTitle() {

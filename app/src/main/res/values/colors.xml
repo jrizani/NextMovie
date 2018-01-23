@@ -3,4 +3,5 @@
     <color name="colorPrimary">#b33fb5</color>
     <color name="colorPrimaryDark">#891f6d</color>
     <color name="colorAccent">#0070b6</color>
+    <color name="colorSliderTitle">#c7000000</color>
 </resources>

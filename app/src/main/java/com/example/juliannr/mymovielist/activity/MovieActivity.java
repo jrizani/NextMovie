@@ -45,7 +45,7 @@ public class MovieActivity extends AppCompatActivity
     }
 
     private void setFragment(Fragment fragment, String jenis) {
-        toolbar.setTitle(jenis);
+        //getActionBar().setTitle(jenis);
         getSupportFragmentManager().beginTransaction().add(R.id.frame_layout, fragment).commit();
     }
 
@@ -73,11 +73,10 @@ public class MovieActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         if (id == R.id.nav_now_playing) {
-            // Handle the camera action
+
         } else if (id == R.id.nav_top_rated) {
 
         } else if (id == R.id.nav_upcoming) {
@@ -88,6 +87,6 @@ public class MovieActivity extends AppCompatActivity
 
         }
         drawer.closeDrawer(GravityCompat.START);
-        return true;
+        return false;
     }
 }

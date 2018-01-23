@@ -17,4 +17,16 @@ public interface Api {
             @Query("api_key") String apiKey,
             @Query("page") int page
     );
+
+    @GET("top_rated")
+    Call<MovieResponse> getTopRated(
+            @Query("api_key") String apiKey,
+            @Query("page") int page
+    );
+
+    @GET("upcoming")
+    Call<MovieResponse> getUpcoming(
+            @Query("api_key") String apiKey,
+            @Query("page") int page
+    );
 }
