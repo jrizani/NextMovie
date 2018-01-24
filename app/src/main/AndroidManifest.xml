@@ -24,11 +24,7 @@
         <activity
             android:name=".modul.activity.MovieDetailActivity"
             android:label="@string/title_activity_movie_detail"
-            android:parentActivityName=".modul.activity.MovieActivity"
             android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.juliannr.mymovielist.modul.activity.MovieActivity" />
         </activity>
     </application>
 

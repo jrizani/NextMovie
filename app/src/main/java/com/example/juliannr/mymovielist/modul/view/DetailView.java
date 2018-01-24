@@ -9,4 +9,12 @@ import com.example.juliannr.mymovielist.model.MovieDetail;
 
 public interface DetailView {
     void onLoadData(MovieDetail movie);
+
+    void onError(String messsage);
+
+    void setFavorite(boolean favorite);
+
+    void onLoading();
+
+    void onNoLoading();
 }

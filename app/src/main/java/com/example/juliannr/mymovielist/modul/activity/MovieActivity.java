@@ -39,7 +39,6 @@ public class MovieActivity extends AppCompatActivity
 
         initView();
         fragment = MovieFragment.newInstance(NOW_PLAYING);
-        toolbar.setTitle(NOW_PLAYING);
         getSupportFragmentManager().beginTransaction().add(R.id.frame_layout, fragment).commit();
     }
 
@@ -51,7 +50,7 @@ public class MovieActivity extends AppCompatActivity
     private void initView() {
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
-
+        toolbar.setTitle(NOW_PLAYING);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);

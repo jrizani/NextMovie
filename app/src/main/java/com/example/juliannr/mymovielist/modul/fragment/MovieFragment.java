@@ -1,6 +1,7 @@
 package com.example.juliannr.mymovielist.modul.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.juliannr.mymovielist.R;
 import com.example.juliannr.mymovielist.model.Movie;
+import com.example.juliannr.mymovielist.modul.activity.MovieDetailActivity;
 import com.example.juliannr.mymovielist.modul.adapter.MovieAdapter;
 import com.example.juliannr.mymovielist.modul.presenter.MoviePresenter;
 import com.example.juliannr.mymovielist.modul.view.MovieView;
@@ -132,7 +134,8 @@ public class MovieFragment extends Fragment implements MovieView {
             adapter.setSetOnItemClickListener(new MovieAdapter.SetOnItemClickListener() {
                 @Override
                 public void onClick(View view, int position) {
-                    //masuk detail
+                    context.startActivity(new Intent(context, MovieDetailActivity.class)
+                            .putExtra("id", movies.get(position).getId()));
                 }
             });
             new CountDownTimer(10000, 1000) {
