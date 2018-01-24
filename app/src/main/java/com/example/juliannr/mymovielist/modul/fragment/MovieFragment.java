@@ -140,14 +140,22 @@ public class MovieFragment extends Fragment implements MovieView {
                 }
             });
             new CountDownTimer(10000, 1000) {
+                Movie movie = movies.get(random.nextInt(movies.size()));
                 @Override
                 public void onTick(long l) {
-
+                    slider.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            context.startActivity(new Intent(context, MovieDetailActivity.class)
+                                    .putExtra("id", movie.getId()).putExtra("jenis",
+                                            jenis));
+                        }
+                    });
                 }
 
                 @Override
                 public void onFinish() {
-                    Movie movie = movies.get(random.nextInt(movies.size()));
+                    movie = movies.get(random.nextInt(movies.size()));
                     Glide.with(context).load(Constant.Api.IMAGE_PATH +
                             movie.getBackdrop()).into(slider);
                     sliderTitle.setText(movie.getTitle());
