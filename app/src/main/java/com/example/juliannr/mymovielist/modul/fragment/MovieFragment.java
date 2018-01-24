@@ -135,7 +135,8 @@ public class MovieFragment extends Fragment implements MovieView {
                 @Override
                 public void onClick(View view, int position) {
                     context.startActivity(new Intent(context, MovieDetailActivity.class)
-                            .putExtra("id", movies.get(position).getId()));
+                            .putExtra("id", movies.get(position).getId()).putExtra("jenis",
+                                    jenis));
                 }
             });
             new CountDownTimer(10000, 1000) {

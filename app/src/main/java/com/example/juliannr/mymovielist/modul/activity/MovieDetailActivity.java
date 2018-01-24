@@ -49,6 +49,7 @@ public class MovieDetailActivity extends AppCompatActivity implements DetailView
     private boolean favorited;
 
     private DetailPresenter presenter;
+    private String jenis;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +60,8 @@ public class MovieDetailActivity extends AppCompatActivity implements DetailView
         presenter.setView(this);
         ButterKnife.bind(this);
         id = getIntent().getIntExtra("id", 1);
-        presenter.loadDetail(id);
+        jenis = getIntent().getStringExtra("jenis");
+        presenter.loadDetail(id, jenis);
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

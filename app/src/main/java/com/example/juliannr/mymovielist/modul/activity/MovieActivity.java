@@ -11,18 +11,22 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.example.juliannr.mymovielist.R;
+import com.example.juliannr.mymovielist.model.MovieDetail;
+import com.example.juliannr.mymovielist.modul.fragment.FavoriteFragment;
+import com.example.juliannr.mymovielist.modul.fragment.FavoriteFragment.OnListFragmentInteractionListener;
 import com.example.juliannr.mymovielist.modul.fragment.MovieFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.example.juliannr.mymovielist.utility.Constant.FragmentChooser.FAVORITE;
 import static com.example.juliannr.mymovielist.utility.Constant.FragmentChooser.NOW_PLAYING;
 import static com.example.juliannr.mymovielist.utility.Constant.FragmentChooser.POPULAR;
 import static com.example.juliannr.mymovielist.utility.Constant.FragmentChooser.TOP_RATED;
 import static com.example.juliannr.mymovielist.utility.Constant.FragmentChooser.UPCOMING;
 
 public class MovieActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, OnListFragmentInteractionListener {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -50,7 +54,7 @@ public class MovieActivity extends AppCompatActivity
     private void initView() {
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
-        toolbar.setTitle(NOW_PLAYING);
+        this.setTitle(NOW_PLAYING);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -85,11 +89,17 @@ public class MovieActivity extends AppCompatActivity
             fragment = MovieFragment.newInstance(POPULAR);
             setFragment(fragment, POPULAR);
         } else if (id == R.id.nav_favorite) {
-
+            fragment = FavoriteFragment.newInstance();
+            setFragment(fragment, FAVORITE);
         } else if (id == R.id.nav_exit) {
             System.exit(0);
         }
         drawer.closeDrawer(GravityCompat.START);
         return false;
+    }
+
+    @Override
+    public void onListFragmentInteraction(MovieDetail item) {
+
     }
 }

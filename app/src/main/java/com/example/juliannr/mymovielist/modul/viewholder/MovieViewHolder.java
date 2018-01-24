@@ -10,6 +10,8 @@ import android.widget.TextView;
 import com.example.juliannr.mymovielist.R;
 import com.example.juliannr.mymovielist.modul.adapter.MovieAdapter;
 
+import org.w3c.dom.Text;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -26,6 +28,8 @@ public class MovieViewHolder extends RecyclerView.ViewHolder {
     ImageView image;
     @BindView(R.id.tv_title)
     TextView title;
+    @BindView(R.id.rating)
+    TextView rating;
     private MovieAdapter callback;
 
     public MovieViewHolder(View itemView, Context context, final MovieAdapter callback) {
@@ -40,6 +44,10 @@ public class MovieViewHolder extends RecyclerView.ViewHolder {
                     callback.getSetOnItemClickListener().onClick(view, getAdapterPosition());
             }
         });
+    }
+
+    public TextView getRating() {
+        return rating;
     }
 
     public ImageView getImage() {

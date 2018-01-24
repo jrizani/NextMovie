@@ -6,6 +6,8 @@ import com.example.juliannr.mymovielist.modul.view.DetailView;
 import com.example.juliannr.mymovielist.utility.App;
 import com.example.juliannr.mymovielist.utility.Constant;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -23,27 +25,33 @@ public class DetailPresenter {
         controller = new MovieDetailController();
     }
 
-    public void loadDetail(int id){
+    public void loadDetail(int id, String jenis){
         getView().onLoading();
-        Call<MovieDetail> call = App.getInstance().getApi().getDetail(id, Constant.Api.API_KEY);
-        call.enqueue(new Callback<MovieDetail>() {
-            @Override
-            public void onResponse(Call<MovieDetail> call, Response<MovieDetail> response) {
-                if(response.isSuccessful()){
-                    if (response.body() != null){
-                        getView().onLoadData(response.body());
-                        getView().onNoLoading();
-                    }else {
-                        getView().onError("Failed to get movie detail");
+        if(!jenis.equals(Constant.FragmentChooser.FAVORITE)){
+            Call<MovieDetail> call = App.getInstance().getApi().getDetail(id, Constant.Api.API_KEY);
+            call.enqueue(new Callback<MovieDetail>() {
+                @Override
+                public void onResponse(Call<MovieDetail> call, Response<MovieDetail> response) {
+                    if(response.isSuccessful()){
+                        if (response.body() != null){
+                            getView().onLoadData(response.body());
+                            getView().onNoLoading();
+                        }else {
+                            getView().onError("Failed to get movie detail");
+                        }
                     }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<MovieDetail> call, Throwable t) {
-                getView().onError("Server Failure: " + t.getMessage());
-            }
-        });
+                @Override
+                public void onFailure(Call<MovieDetail> call, Throwable t) {
+                    getView().onError("Server Failure: " + t.getMessage());
+                }
+            });
+        }else {
+            MovieDetail movie = controller.getMovie(id);
+            getView().onLoadData(movie);
+            getView().onNoLoading();
+        }
     }
 
     public DetailView getView() {

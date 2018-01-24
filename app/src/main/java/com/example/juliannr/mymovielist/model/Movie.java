@@ -14,6 +14,12 @@ public class Movie {
     private String image;
     @SerializedName("backdrop_path")
     private String backdrop;
+    @SerializedName("vote_average")
+    private float rating;
+
+    public float getRating() {
+        return rating;
+    }
 
     public String getBackdrop() {
         return backdrop;

@@ -44,4 +44,9 @@ public class MovieDetailController {
         realm.where(MovieDetail.class).equalTo("id", id).findFirst().deleteFromRealm();
         realm.commitTransaction();
     }
+
+    public MovieDetail getMovie(int id) {
+        realm = Realm.getDefaultInstance();
+        return realm.where(MovieDetail.class).equalTo("id", id).findFirst();
+    }
 }

@@ -1,9 +1,15 @@
 package com.example.juliannr.mymovielist.modul.presenter;
 
+import com.example.juliannr.mymovielist.model.Movie;
+import com.example.juliannr.mymovielist.model.MovieDetail;
 import com.example.juliannr.mymovielist.model.MovieResponse;
+import com.example.juliannr.mymovielist.model.controller.MovieDetailController;
 import com.example.juliannr.mymovielist.utility.App;
 import com.example.juliannr.mymovielist.modul.view.MovieView;
 import com.example.juliannr.mymovielist.utility.Constant;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -18,6 +24,11 @@ import static com.example.juliannr.mymovielist.utility.Constant.Api.API_KEY;
 
 public class MoviePresenter {
     MovieView view;
+    MovieDetailController controller;
+
+    public MoviePresenter() {
+        controller = new MovieDetailController();
+    }
 
     private void loadNowPlaying(int page){
         Call<MovieResponse> call = App.getInstance().getApi().getNowPlaying(API_KEY, page);

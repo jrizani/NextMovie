@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide;
 import com.example.juliannr.mymovielist.R;
 import com.example.juliannr.mymovielist.model.Movie;
 import com.example.juliannr.mymovielist.modul.viewholder.MovieViewHolder;
+import com.example.juliannr.mymovielist.utility.Constant;
 
 import java.util.List;
 
@@ -58,6 +59,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder> {
         Movie movie = movies.get(position);
         Glide.with(context).load(IMAGE_PATH + movie.getImage()).into(holder.getImage());
         holder.getTitle().setText(movie.getTitle());
+        holder.getRating().setText(Constant.Api.RATING + movie.getRating());
     }
 
     @Override
