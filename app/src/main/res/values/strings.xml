@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Movie List</string>
+    <string name="app_name">Next Movie</string>
     <string name="api_key">1758b70f5564761e74d97cf6d5ec9d28</string>
     <string name="title_activity_movie">MovieActivity</string>
 

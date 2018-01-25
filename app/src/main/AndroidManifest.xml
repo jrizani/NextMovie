@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.juliannr.mymovielist">
+    package="com.example.juliannr.nextmovie">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".utility.App"
+        android:name="com.example.juliannr.nextmovie.utility.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".modul.activity.MovieActivity"
+            android:name="com.example.juliannr.nextmovie.modul.activity.MovieActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".modul.activity.MovieDetailActivity"
+            android:name="com.example.juliannr.nextmovie.modul.activity.MovieDetailActivity"
             android:label="@string/title_activity_movie_detail"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
