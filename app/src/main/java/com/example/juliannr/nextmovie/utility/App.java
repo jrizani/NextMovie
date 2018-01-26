@@ -6,6 +6,12 @@ import com.example.juliannr.nextmovie.api.Api;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
+
 import io.realm.Realm;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -32,6 +38,19 @@ public class App extends Application {
         Realm.init(this);
         makeRetrofit();
         makeGson();
+        Session.init(this);
+    }
+
+    public Date parseDateUTC(String utcString){
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        format.setTimeZone(TimeZone.getTimeZone(utcString.substring(20,22 )));
+        Date date = new Date();
+        try {
+            date = format.parse(utcString.substring(0, 18));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return date;
     }
 
     private void makeGson() {

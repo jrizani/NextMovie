@@ -9,7 +9,7 @@ public interface Constant {
     String GITHUB_LINK = "https://github.com/jrizani/NextMovie";
 
     interface Api{
-        String BASE_URL = "https://Api.themoviedb.org/3/movie/";
+        String BASE_URL = "https://Api.themoviedb.org/3/";
         String API_KEY = "1758b70f5564761e74d97cf6d5ec9d28";
         String IMAGE_PATH = "https://image.tmdb.org/t/p/w500";
         String RATING = "\u2605 ";

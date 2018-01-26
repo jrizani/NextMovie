@@ -229,6 +229,6 @@ public class MovieFragment extends Fragment implements MovieView {
         slider.setVisibility(View.GONE);
         recyclerView.setVisibility(View.GONE);
         progressBar.setVisibility(View.GONE);
-        Toast.makeText(getContext(), message, Toast.LENGTH_LONG);
+        Toast.makeText(getContext(), message, Toast.LENGTH_LONG).show();
     }
 }
