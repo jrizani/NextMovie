@@ -44,7 +44,7 @@ public class LauncherActivity extends AppCompatActivity implements LauncherView 
             public void run() {
                 presenter.loadSession();
             }
-        }, 3000);
+        }, 500);
     }
 
     @Override
@@ -55,6 +55,7 @@ public class LauncherActivity extends AppCompatActivity implements LauncherView 
             Session.getInstance().setExpiredDate(expired);
         }
         startActivity(new Intent(this, MovieActivity.class));
+        finish();
     }
 
     @Override
