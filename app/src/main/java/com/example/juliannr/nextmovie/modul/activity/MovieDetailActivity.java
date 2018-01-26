@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -72,6 +73,8 @@ public class MovieDetailActivity extends AppCompatActivity implements DetailView
     ImageView rate5;
     @BindView(R.id.btn_rating)
     AppCompatButton btnRating;
+    @BindView(R.id.l2)
+    LinearLayout rateLayout;
 
     private int id;
 
@@ -102,6 +105,11 @@ public class MovieDetailActivity extends AppCompatActivity implements DetailView
                 onBackPressed();
             }
         });
+        if(jenis.equals(Constant.FragmentChooser.FAVORITE)){
+            //not show rate if in favorite
+            rateLayout.setVisibility(View.GONE);
+            btnRating.setVisibility(View.GONE);
+        }
     }
 
     @Override
